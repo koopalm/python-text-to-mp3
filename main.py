@@ -1,7 +1,7 @@
 import pyttsx3
 import PyPDF2
 
-# Funktio, joka muuntaa PDF-tiedoston tekstiksi
+# Function that turns pdf file to text
 def pdf_to_text(pdf_file):
     with open(pdf_file, 'rb') as f:
         pdf_reader = PyPDF2.PdfReader(f)
@@ -10,13 +10,13 @@ def pdf_to_text(pdf_file):
             text += pdf_reader.pages[page_num].extract_text()
         return text
 
-# Funktio, joka tallentaa tekstin MP3-tiedostoksi
+# Function that stores the text as a mp3 file
 def text_to_mp3(text, output_file):
     engine = pyttsx3.init()
     engine.save_to_file(text, output_file)
     engine.runAndWait()
 
-# Pääohjelma
+# Main program. 
 def main():
     pdf_file = 'book.pdf'
     output_file = 'output.mp3'
@@ -24,7 +24,7 @@ def main():
     text = pdf_to_text(pdf_file)
     text_to_mp3(text, output_file)
 
-    print(f"PDF-tiedosto '{pdf_file}' on muunnettu MP3-tiedostoksi '{output_file}'.")
+    print(f"PDF file '{pdf_file}' has been turned into a MP3 file '{output_file}'.")
 
 if __name__ == "__main__":
     main()
